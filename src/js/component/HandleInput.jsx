@@ -24,7 +24,7 @@ export function HandleInput (props) {
 
 	return (
 		<div className="text-center container">
-			<h1>todos</h1>
+			<h1>to do list</h1>
 			<ul>
  				<li><input onKeyDown={handleAdd} placeholder="What needs to be done?" value={props.list}/></li>
                 {list.map((item, index) => (
