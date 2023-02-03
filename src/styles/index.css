@@ -1,12 +1,73 @@
+ul li{
+    display: flex;
+    border: 1px solid gray;
+    background-color: white;
+    box-shadow: 2px 2px 2px 2px grey;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 40px;
+    list-style: none;
+    border-radius: 1px;
+    font-size: x-large;
+    text-align: start;
+    color: gray;
+    font-family: Helvetica;
+    letter-spacing: 1px;
+    font-weight: 100;
+    max-width: 800px;
+    margin: 0 auto;
 
-/* 
+}
 
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
+ul li:hover{
+    font-size: xx-large;
+}
 
-*/
+#fixedcounter{
+    font-size: large;
+}
+
+input{
+    color: gray;
+    border: none;
+    letter-spacing: 1px;
+}
+
+input:focus {
+    outline: none;
+}
+
+
+body{
+    background-image: url("https://img.freepik.com/fotos-premium/fondo-textura-papel-artesanal-blanco_485324-766.jpg?w=1060");
+}
+
+h1{
+    color: lightcoral;
+    font-size: 140px;
+    letter-spacing: 5px;
+    font-weight: lighter;
+    opacity: 0.5;
+
+}
+
+ul li span{
+    margin-left: auto;
+    justify-content:right;
+    text-align: right;
+    padding-right: 40px;
+    visibility: hidden;
+}
+
+ul li:hover span{
+    visibility: visible;
+    color:red;
+    font-size: xx-large;
+    text-align: right;
+    justify-items: right !important;
+}
+
+#fixedcounter{
+    padding-left: 10px !important;
+    color: lightgrey;
+}
