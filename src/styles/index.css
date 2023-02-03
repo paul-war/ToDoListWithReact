@@ -40,6 +40,7 @@ input:focus {
 
 body{
     background-image: url("https://img.freepik.com/fotos-premium/fondo-textura-papel-artesanal-blanco_485324-766.jpg?w=1060");
+    cursor: default;
 }
 
 h1{
@@ -65,6 +66,8 @@ ul li:hover span{
     font-size: xx-large;
     text-align: right;
     justify-items: right !important;
+    font-weight: 900;
+    cursor: pointer;
 }
 
 #fixedcounter{
