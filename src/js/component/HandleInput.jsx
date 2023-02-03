@@ -4,11 +4,6 @@ export function HandleInput (props) {
 
     const [counter, setCounter] = useState(0);
     const [list, setList] = useState([]);
-    const [inputValue, setInputValue] = useState("");
-
-    const handleFocus = (event) => {
-      setInputValue("");
-    };
 
     const handleAdd = (event) => {
         if (event.key === "Enter") {
@@ -31,7 +26,7 @@ export function HandleInput (props) {
 		<div className="text-center container">
 			<h1>todos</h1>
 			<ul>
- 				<li><input onFocus={handleFocus} onKeyDown={handleAdd} type={props.list}/></li>
+ 				<li><input onKeyDown={handleAdd} placeholder="What needs to be done?" value={props.list}/></li>
                 {list.map((item, index) => (
                     <li key={index}>{item}<span onClick={handleX}>X</span></li>
                 ))}

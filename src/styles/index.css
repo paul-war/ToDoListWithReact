@@ -65,7 +65,6 @@ ul li:hover span{
     color:red;
     font-size: xx-large;
     text-align: right;
-    justify-items: right !important;
     font-weight: 900;
     cursor: pointer;
 }
