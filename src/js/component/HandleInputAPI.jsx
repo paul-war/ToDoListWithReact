@@ -5,6 +5,9 @@ export function HandleInputAPI (props) {
   const [list, setList] = useState([]);
   const [user, setUser] = useState('');
 
+  
+  //FETCH API
+
   const fetchAPI = async () => {
     const url = `https://assets.breatheco.de/apis/fake/todos/user/${user}`;
     let request = {
@@ -13,22 +16,29 @@ export function HandleInputAPI (props) {
     };
 
     const response = await fetch(url, request);
-    if(response.status === 200){
+    if(response.status === 200 && user!=''){
       const responseJSON = await response.json();
       responseJSON.map( (item) => {setList((e) => [...e, item.label]);} )}
-  };
+
+    };
+  
 
   useEffect(() => {
     fetchAPI();
   }, []);
 
+
+  //MANEJO DE AGREGADO DE NUEVAS TAREAS
   const handleAdd = (event) => {
     if (event.key === "Enter") {
       setList([...list, event.target.value]);
       setCounter(counter + 1);
       updateTodoList(list);
+      event.target.value="";
     } 
   };
+
+  //GENERAR NUEVO USER
 
   const generateUserinAPI = () => {
 
@@ -45,14 +55,22 @@ export function HandleInputAPI (props) {
       redirect: 'follow'
     };
 
-    fetch(`https://assets.breatheco.de/apis/fake/todos/user/${user}`, requestOptions)
-      .then(response => response.text())
-      .then(result => console.log(result))
+   fetch(`https://assets.breatheco.de/apis/fake/todos/user/${user}`, requestOptions)
+      .then(response => response.json())
+      .then(result => console.log("Usuario creado ok"))
       .catch(error => console.log('error', error));
-      setList([]);
+
+/*    const nombrefuncion = async () => {
+      const response = await fetch(`https://assets.breatheco.de/apis/fake/todos/user/${user}`, requestOptions)
+      
+      const responseJSON = await response.json();
+      console.log(responseJSON);
+      responseJSON.map((item) => setList((e) => [...e, item.label]))
+    }
+*/
   };
 
-
+  //ACTUALIZAR LISTA DE TO-DOS
   const updateTodoList = (list) => {
     const todos = list.map(label => ({ label, done: false }));
   
@@ -69,21 +87,33 @@ export function HandleInputAPI (props) {
     };
   
     fetch(`https://assets.breatheco.de/apis/fake/todos/user/${user}`, requestOptions)
-      .then(response => response.text())
+      .then(response => response.json())
       .then(data => console.log("Data updated", data))
       .catch(error => console.log('error', error));
   };
+
   
+  //ELIMINAR USUARIO -OK
   const cleanAllTasks = () => {
-    let request = {
-      method: 'DELETE'
+    var raw = "";
+
+    var requestOptions = {
+      method: 'DELETE',
+      body: raw,
+      redirect: 'follow'
     };
-    fetch(`https://assets.breatheco.de/apis/fake/todos/user/${user}`, request);
+    
+    fetch(`https://assets.breatheco.de/apis/fake/todos/user/${user}`, requestOptions)
+      .then(response => response.text())
+      .then(result => console.log("Usuario eliminado"))
+      .catch(error => console.log('error', error));
     setList([]);
     setCounter(0);
     updateTodoList([]);
   };
 
+
+  //RETURN
 	return (
 		<div className="text-center container">
 			<h1>to do list</h1>
